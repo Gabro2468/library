@@ -1,4 +1,4 @@
-let myLibrary = []
+const myLibrary = []
 
 let addToLibrary = (name) => {
      myLibrary.push(name)
@@ -26,10 +26,8 @@ function book(name, author, pages, readOrNot) {
      }
  } 
  
- 
  let sevenKingdoms = new book('Seven Kingdoms', 'Someone', '541', true)
  let Witcher = new book('Witcher', 'Andrei Sapkowski', '654', false)
  
- newBook(sevenKingdoms)
+addToLibrary(sevenKingdoms)
 
- 
