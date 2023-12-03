@@ -13,7 +13,9 @@ function book(name, author, pages, readOrNot) {
      this.readOrNot = readOrNot
  }
  
- book.prototype.sayInfo = function() {
+// prototype function for info read
+
+book.prototype.sayInfo = function() {
      if (this.readOrNot == true){
          return(this.name + " written by " + this.author + " and has " + this.pages + " pages. Already read.")
      }
@@ -30,4 +32,17 @@ function book(name, author, pages, readOrNot) {
  let Witcher = new book('Witcher', 'Andrei Sapkowski', '654', false)
  
 addToLibrary(sevenKingdoms)
+addToLibrary(Witcher)
+
+// scripts for modal add button 
+
+const addBtn = document.querySelector("#add")
+const addClose = document.querySelector("#addClose")
+const addPopUp = document.querySelector("#addPopUp")
+
+addBtn.addEventListener("click", () => {
+    addPopUp.showModal()
+})
+
+
 
