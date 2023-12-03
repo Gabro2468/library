@@ -84,6 +84,41 @@ body{
      transform: rotate(90deg);
 }
 
+#addPopUp{
+     color: grey;
+     font-size: 24px;
+     font-family: 'Poppins', sans-serif;
+     border: 2px solid grey;
+     border-radius: 16px;
+     padding: 2rem;
+}
+
+#form-input p{
+     margin: 0;
+}
+
+#form-buttons{
+     display: flex;
+     justify-content: space-between;
+}
+
+#form-buttons button{
+     font-size: 20px;
+     font-family: 'Poppins', sans-serif;
+     color: grey;
+     padding: 0.5rem 1.5rem;
+     border: 2px solid grey;
+     border-radius: 16px;
+}
+
+#form-buttons button:hover{
+     cursor: pointer;
+     background-color: grey;
+     color: azure;
+     box-shadow: 0px 5px 15px 1px black;
+     transition-duration: 0.3s;
+}
+
 dialog::backdrop{
      background-color: hsla(0, 0%, 17%, 0.8);
 }
