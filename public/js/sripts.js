@@ -28,20 +28,36 @@ book.prototype.sayInfo = function() {
      }
  } 
  
- let sevenKingdoms = new book('Seven Kingdoms', 'Someone', '541', true)
- let Witcher = new book('Witcher', 'Andrei Sapkowski', '654', false)
+let sevenKingdoms = new book('Seven Kingdoms', 'Someone', '541', true)
  
 addToLibrary(sevenKingdoms)
-addToLibrary(Witcher)
 
-// scripts for modal add button 
+// scripts for buttons 
 
 const addBtn = document.querySelector("#add")
-const addClose = document.querySelector("#addClose")
 const addPopUp = document.querySelector("#addPopUp")
+const submitBtn = document.querySelector("#submitBtn")
+
 
 addBtn.addEventListener("click", () => {
     addPopUp.showModal()
+})
+
+submitBtn.addEventListener("click", () => {
+    addPopUp.close()
+})
+
+// scripts for gaining data from form 
+
+let bookForm = document.querySelector("#bookForm")
+
+bookForm.addEventListener('submit', (event) => {
+    event.preventDefault()
+
+    let name = document.querySelector("#bookName")
+    console.log(name.value)
+
+    //new book(`${}`) 
 })
 
 
