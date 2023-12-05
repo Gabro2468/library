@@ -26,11 +26,7 @@ book.prototype.sayInfo = function() {
          console.log(this.readOrNot)
          return("Error")
      }
- } 
- 
-let sevenKingdoms = new book('Seven Kingdoms', 'Someone', '541', true)
- 
-addToLibrary(sevenKingdoms)
+ }
 
 // scripts for buttons 
 
@@ -54,10 +50,19 @@ let bookForm = document.querySelector("#bookForm")
 bookForm.addEventListener('submit', (event) => {
     event.preventDefault()
 
-    let name = document.querySelector("#bookName")
-    console.log(name.value)
+    let name = document.querySelector("#bookName").value
+    let author = document.querySelector("#bookAuthor").value
+    let pages = document.querySelector("#bookPages").value
+    let radio = document.getElementsByName("readOrNot")
+    let readOrNot
+    if(radio[0].checked){
+        readOrNot = radio[0].value
+    }
+    else if(radio[1].checked){
+        readOrNot = radio[1].value
+    }
 
-    //new book(`${}`) 
+    addToLibrary(new book(name, author, pages, readOrNot)) 
 })
 
 
