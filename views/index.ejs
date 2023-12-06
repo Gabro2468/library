@@ -16,11 +16,11 @@
 
         <div id="library">
 
-            <div id="test">
+            <div class="book">
                 <p>"Lord Of the rings" </p>
                 <p>J.K.Rowling</p>
                 <p>921 pages</p>
-                <button>Read</button>
+                <button class="ifReadBtn">Read</button>
             </div>
 
             <button id="add">
@@ -32,25 +32,25 @@
                 <form id="bookForm">
                     <div id="form-input">
                         <label for="bookName">Name:</label>
-                        <input type="text" id="bookName" name="name"/>
+                        <input type="text" id="bookName" name="name" required/>
 
                         <br/>
 
                         <label for="bookAuthor">Author:</label>
-                        <input type="text" id="bookAuthor" name="author"/>
+                        <input type="text" id="bookAuthor" name="author" required/>
 
                         <br/>
 
                         <label for="bookPages">Number of pages:</label>
-                        <input type="number" id="bookPages" name="pages">
+                        <input type="number" id="bookPages" name="pages" required>
 
                         <br>
 
                         <p>Have you read it yet ?</p>
                         <label for="bookYes">Yes</label>
-                        <input type="radio" id="bookYes" name="readOrNot" value="true"/>
+                        <input type="radio" id="bookYes" name="readOrNot" value="true" required/>
                         <label for="bookNo">No</label>
-                        <input type="radio" id="bookNo" name="readOrNot" value="false"/>
+                        <input type="radio" id="bookNo" name="readOrNot" value="false" required/>
                     </div>
 
                     <div id="form-buttons">

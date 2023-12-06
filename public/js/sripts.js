@@ -26,14 +26,14 @@ book.prototype.sayInfo = function() {
          console.log(this.readOrNot)
          return("Error")
      }
- }
+}
 
 // scripts for buttons 
 
 const addBtn = document.querySelector("#add")
 const addPopUp = document.querySelector("#addPopUp")
 const submitBtn = document.querySelector("#submitBtn")
-
+const readBtn = document.querySelector(".ifReadBtn")
 
 addBtn.addEventListener("click", () => {
     addPopUp.showModal()
@@ -41,6 +41,22 @@ addBtn.addEventListener("click", () => {
 
 submitBtn.addEventListener("click", () => {
     addPopUp.close()
+})
+
+readBtn.addEventListener("click", () => {
+    if(readBtn.innerHTML === "Read"){
+        readBtn.innerHTML = "Not Read"
+        readBtn.style.backgroundColor = "lightcoral"
+    }
+
+    else if(readBtn.innerHTML === "Not Read"){
+        readBtn.innerHTML = "Read"
+        readBtn.style.backgroundColor = "lightgreen"
+    }
+
+    else{
+        console.log("Error, problem with readBtn ")
+    }
 })
 
 // scripts for gaining data from form 
@@ -62,7 +78,35 @@ bookForm.addEventListener('submit', (event) => {
         readOrNot = radio[1].value
     }
 
-    addToLibrary(new book(name, author, pages, readOrNot)) 
+    addToLibrary(new book(name, author, pages, readOrNot))
+    
+    let newBook = document.createElement("div")
+    newBook.classList.add("book")
+
+    let newBookName = document.createElement("p")
+    newBookName.textContent = name
+    newBook.appendChild(newBookName)
+
+    let newBookAuthor = document.createElement("p")
+    newBookAuthor.textContent = author
+    newBook.appendChild(newBookAuthor)
+
+    let newBookPages = document.createElement("p")
+    newBookPages = textContent = pages
+    newBook.appendChild(newBookPages)
+    
+    let newBookRead = document.createElement("button")
+    if(readOrNot === true){
+        newBookRead.textContent = "Read"
+    }
+    else if(readOrNot === false){
+        newBookRead.textContent = "Not Read"
+    }
+    else {
+        console.log("Error. Problem with read or not value ")
+    }
+    newBook.appendChild(newBookRead)
+
 })
 
 
