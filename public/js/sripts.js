@@ -33,7 +33,6 @@ book.prototype.sayInfo = function() {
 const addBtn = document.querySelector("#add")
 const addPopUp = document.querySelector("#addPopUp")
 const submitBtn = document.querySelector("#submitBtn")
-const readBtn = document.querySelector(".ifReadBtn")
 
 addBtn.addEventListener("click", () => {
     addPopUp.showModal()
@@ -43,23 +42,70 @@ submitBtn.addEventListener("click", () => {
     addPopUp.close()
 })
 
-readBtn.addEventListener("click", () => {
-    if(readBtn.innerHTML === "Read"){
-        readBtn.innerHTML = "Not Read"
-        readBtn.style.backgroundColor = "lightcoral"
-    }
+let addReadBtn = (readBtn) => {
 
-    else if(readBtn.innerHTML === "Not Read"){
-        readBtn.innerHTML = "Read"
-        readBtn.style.backgroundColor = "lightgreen"
-    }
+    readBtn.addEventListener("click", () => {
+        if(readBtn.textContent == "Read"){
+            readBtn.textContent = "Not Read"
+            readBtn.style.backgroundColor = "lightcoral"
+        }
+    
+        else if(readBtn.textContent == "Not Read"){
+            readBtn.textContent = "Read"
+            readBtn.style.backgroundColor = "lightgreen"
+        }
+    
+        else{
+            console.log("Error, problem with readBtn ")
+        }
+    })
+}
 
-    else{
-        console.log("Error, problem with readBtn ")
+//function for making new books 
+
+let count = 0
+
+let makeNewBook = (name,author,pages,readOrNot) => {
+    let newBook = document.createElement("div")
+    newBook.classList.add("book")
+
+    let newBookName = document.createElement("p")
+    newBookName.textContent = '"' + name + '"'
+    newBook.appendChild(newBookName)
+
+    let newBookAuthor = document.createElement("p")
+    newBookAuthor.textContent = author
+    newBook.appendChild(newBookAuthor)
+
+    let newBookPages = document.createElement("p")
+    newBookPages.textContent = pages
+    newBook.appendChild(newBookPages)
+    
+    let newBookRead = document.createElement("button")
+    if(readOrNot === true){
+        newBookRead.textContent = "Read"
+        newBookRead.classList.add("ifReadBtn")
     }
-})
+    else if(readOrNot === false){
+        newBookRead.textContent = "Not Read"
+        newBookRead.classList.add("ifReadBtn")
+        newBookRead.style.backgroundColor = "lightcoral"
+    }
+    else {
+        console.log("Error. Problem with read or not value ")
+    }
+    addReadBtn(newBookRead)
+    newBook.appendChild(newBookRead)
+
+    // final appending new book into library    
+    
+    library.insertBefore(newBook, addBtn)
+    count =+ 1 
+}
 
 // scripts for gaining data from form 
+
+const library = document.querySelector("#library")
 
 let bookForm = document.querySelector("#bookForm")
 
@@ -72,40 +118,15 @@ bookForm.addEventListener('submit', (event) => {
     let radio = document.getElementsByName("readOrNot")
     let readOrNot
     if(radio[0].checked){
-        readOrNot = radio[0].value
+        readOrNot = true
     }
     else if(radio[1].checked){
-        readOrNot = radio[1].value
+        readOrNot = false
     }
 
-    addToLibrary(new book(name, author, pages, readOrNot))
+    addToLibrary(new book(name, author, pages, readOrNot))  
     
-    let newBook = document.createElement("div")
-    newBook.classList.add("book")
-
-    let newBookName = document.createElement("p")
-    newBookName.textContent = name
-    newBook.appendChild(newBookName)
-
-    let newBookAuthor = document.createElement("p")
-    newBookAuthor.textContent = author
-    newBook.appendChild(newBookAuthor)
-
-    let newBookPages = document.createElement("p")
-    newBookPages = textContent = pages
-    newBook.appendChild(newBookPages)
-    
-    let newBookRead = document.createElement("button")
-    if(readOrNot === true){
-        newBookRead.textContent = "Read"
-    }
-    else if(readOrNot === false){
-        newBookRead.textContent = "Not Read"
-    }
-    else {
-        console.log("Error. Problem with read or not value ")
-    }
-    newBook.appendChild(newBookRead)
+    makeNewBook(name,author,pages,readOrNot)
 
 })
 
